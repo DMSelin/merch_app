@@ -1,10 +1,8 @@
 import imaplib
 import email
-from email.header import decode_header
 import base64
-#from bs4 import BeautifulSoup
+from email.header import decode_header 
 from configparser import ConfigParser
-import asyncio
 
 urlsconf ='config/config.ini'
 config =ConfigParser() 
@@ -32,18 +30,44 @@ def read_mails(count_mails):
         if first_word_subject == "Отчет": # При совпадении перовго слова со словом "Отчет", выходим из цикла
             break
         last_mails.append(subject) # Добавляю запись в список
-    
+
         for part in msg.walk():
             if part.get_content_maintype() == 'text' and part.get_content_subtype() == 'plain':
                 text = base64.b64decode(part.get_payload()).decode()
                 text_mails.append(text)   
 
     return last_mails, text_mails  # Возвращаю список писем за сегодня и текст писем
+
+# Подключение к папке "Отправленные"
 sent_emails = (imap.select(b"&BB4EQgQ,BEAEMAQyBDsENQQ9BD0ESwQ1-"))
 count_mails = int(sent_emails[1][0].decode("utf-8"))
-received_mail = read_mails(count_mails)
-for i in received_mail:
-    print(i)
+print(count_mails)
+received_mails_subjects, recieved_mails_texts = read_mails(count_mails) 
+
+# Создаю список названий магазинов из полученного списка названий отчетов
+name_stores = list()
+for i in received_mails_subjects:
+    if i.find(",", 0, 11) == -1:
+        name_store = i[:i.find(" ")]
+    else:
+        name_store = i[:i.find(",")]
+    name_stores.append(name_store)
+
+# Создаю список названий адресов из полученного списка названий отчетов
+name_streets = list()
+for i in received_mails_subjects:
+    name_street = i[i.find(" "):i.rfind(",")]
+    name_streets.append(name_street)
+
+# Создаю список комментариев из полученного списка текстов писем
+comment_mails = list()
+for i in recieved_mails_texts:
+    i = i.replace("С уважением Селин Денис", "")
+    i = i.replace("\n", "")
+    comment_mails.append(f"{i}\n")
+
+for com in comment_mails:
+    print(com)
 
 # letter_date = email.utils.parsedate_tz(msg["Date"]) # дата получения, приходит в виде строки, дальше надо её парсить в формат datetime
 # letter_id = msg["Message-ID"] #айди письма
