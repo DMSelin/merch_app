@@ -22,14 +22,23 @@ print(imap.login(username, mail_pass))
 #     print(folder)
 def read_mails(count_mails):
     last_mails = list()
-    for i in range(count_mails-15, count_mails):
-        res, msg = imap.fetch(f'{i}'.encode(), '(RFC822)')  #Для метода search по порядковому номеру письма
-        msg = email.message_from_bytes(msg[0][1])
+    text_mails = list()
+    for i in range(count_mails, count_mails-5, -1):
+        res, msg = imap.fetch(f'{i}'.encode(), '(RFC822)')  
+        msg = email.message_from_bytes(msg[0][1]) # Извлекаем часть с содержанием
+        letter_subject = msg["Subject"] # Извлекаем тему сообщения в кодеровке
+        subject = decode_header(letter_subject)[0][0].decode() # Декодируем в текст
+        first_word_subject = subject[:subject.find(" ")] # Вырезаем первое слово из содержания
+        if first_word_subject == "Отчет": # При совпадении перовго слова со словом "Отчет", выходим из цикла
+            break
+        last_mails.append(subject) # Добавляю запись в список
     
-        letter_subject = msg["Subject"]
-        last_mails.append(decode_header(letter_subject)[0][0].decode())
-    return last_mails
-# Подклбчение к папке Отправленные
+        for part in msg.walk():
+            if part.get_content_maintype() == 'text' and part.get_content_subtype() == 'plain':
+                text = base64.b64decode(part.get_payload()).decode()
+                text_mails.append(text)   
+
+    return last_mails, text_mails  # Возвращаю список писем за сегодня и текст писем
 sent_emails = (imap.select(b"&BB4EQgQ,BEAEMAQyBDsENQQ9BD0ESwQ1-"))
 count_mails = int(sent_emails[1][0].decode("utf-8"))
 received_mail = read_mails(count_mails)
