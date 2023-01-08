@@ -4,7 +4,7 @@ import base64
 from email.header import decode_header 
 from configparser import ConfigParser
 
-urlsconf ='config/config.ini'
+urlsconf ='src/config/config.ini'
 config =ConfigParser() 
 config.read(urlsconf) 
 
@@ -52,7 +52,7 @@ for i in received_mails_subjects:
     else:
         name_store = i[:i.find(",")]
     name_stores.append(name_store)
-
+    
 # Создаю список названий адресов из полученного списка названий отчетов
 name_streets = list()
 for i in received_mails_subjects:
@@ -65,9 +65,6 @@ for i in recieved_mails_texts:
     i = i.replace("С уважением Селин Денис", "")
     i = i.replace("\n", "")
     comment_mails.append(f"{i}\n")
-
-for com in comment_mails:
-    print(com)
 
 # letter_date = email.utils.parsedate_tz(msg["Date"]) # дата получения, приходит в виде строки, дальше надо её парсить в формат datetime
 # letter_id = msg["Message-ID"] #айди письма
