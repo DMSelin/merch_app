@@ -17,7 +17,7 @@ class FormattingTable:
 
     def set_font(self, ws):
         # Шрифт для всей таблицы данных
-        all_font = Font(name='Calibri', size=14, color='000000')
+        all_font = Font(name='Calibri', size=12, color='000000')
         header_font = Font(name='Calibri', size=14, color='000000', bold=True)
         all_cells = ws['A1':f'I{ws.max_row}'] # диапозон таблицы без заголовков
         for row in all_cells:

@@ -22,13 +22,14 @@ def connection():
 def read_mails(count_mails, imap):
     last_mails = list()
     text_mails = list()
-    for i in range(count_mails, count_mails-5, -1):
+    for i in range(count_mails, count_mails-16, -1):
         res, msg = imap.fetch(f'{i}'.encode(), '(RFC822)')  
         msg = email.message_from_bytes(msg[0][1]) # Извлекаем часть с содержанием
         letter_subject = msg["Subject"] # Извлекаем тему сообщения в кодеровке
         subject = decode_header(letter_subject)[0][0].decode() # Декодируем в текст
         first_word_subject = subject[:subject.find(" ")] # Вырезаем первое слово из содержания
-        if first_word_subject == "Отчет": # При совпадении перовго слова со словом "Отчет", выходим из цикла
+        print(first_word_subject)
+        if first_word_subject == "Отчет": # При совпадении первого слова со словом "Отчет", выходим из цикла
             break
         last_mails.append(subject) # Добавляю запись в список
 
@@ -43,7 +44,7 @@ def extract_store_names(subject):
     # Создаю список названий магазинов из полученного списка названий отчетов
     name_stores = list()
     for i in subject:
-        if i.find(",", 0, 11) == -1:
+        if i.find(",", 0, 12) == -1:
             name_store = i[:i.find(" ")]
         else:
             name_store = i[:i.find(",")]

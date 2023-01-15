@@ -18,4 +18,6 @@ l_routs = tk.Label(frame_menu, text='Маршруты').pack(expand=1)
 l_report = tk.Label(frame_menu, text='Отчет').pack(expand=1)
 l_positions = tk.Label(frame_menu,text='Позиции').pack()
 
+
+
 mainwindow.mainloop()
