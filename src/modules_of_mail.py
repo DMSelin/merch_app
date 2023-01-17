@@ -22,7 +22,7 @@ def connection():
 def read_mails(count_mails, imap):
     last_mails = list()
     text_mails = list()
-    for i in range(count_mails, count_mails-16, -1):
+    for i in range(count_mails, count_mails-20, -1):
         res, msg = imap.fetch(f'{i}'.encode(), '(RFC822)')  
         msg = email.message_from_bytes(msg[0][1]) # Извлекаем часть с содержанием
         letter_subject = msg["Subject"] # Извлекаем тему сообщения в кодеровке
