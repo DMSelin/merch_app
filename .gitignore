@@ -2,3 +2,4 @@
 *.ini
 *.xlsx
 *.pyc
+*.DS_Store
