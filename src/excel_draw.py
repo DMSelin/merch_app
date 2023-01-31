@@ -15,20 +15,19 @@ report_sheet = frmt.FormattingTable(active_sheet)
 name_stores, name_streets, message_body = mail.mail_parse()
 counter = 1
 for i in range(0, len(name_stores)):
-    print(name_stores[i])
     if name_stores[i] == "Дикси":
         for data in sfr.diksi(name_streets[i], message_body[i], counter):
             active_sheet.append(data)
     elif name_stores[i] == "Пятёрочка" or name_stores[i] == "Пятерочка":
         for data in sfr.pytrchka(name_streets[i], message_body[i], counter):
             active_sheet.append(data)
-    elif name_stores[i] == "Перекресток" or name_stores[i] == "Перекрёсток": 
+    elif name_stores[i] == "Перекресток" or name_stores[i] == "Перекрёсток" or name_stores[i] == "Перекрёсток," or name_stores[i] == "Перекресток,": 
         for data in sfr.perek(name_streets[i], message_body[i], counter):
             active_sheet.append(data)
     elif name_stores[i] == "Магнит":
         for data in sfr.magnit(name_streets[i], message_body[i], counter):
             active_sheet.append(data)
-    elif name_stores[i] == "КиБ":
+    elif name_stores[i] == "КиБ" or name_stores[i] == "Киб":
         for data in sfr.kib(name_streets[i], message_body[i], counter):
             active_sheet.append(data)
     elif name_stores[i] == "Верный":
@@ -47,9 +46,9 @@ for i in range(0, len(name_stores)):
         for data in sfr.vinlab(name_streets[i], message_body[i], counter):
             active_sheet.append(data)
     elif name_stores[i] == "Бристоль":
-        for data in sfr.brisol(name_streets[i], message_body[i], counter):
+        for data in sfr.bristol(name_streets[i], message_body[i], counter):
             active_sheet.append(data)
-    elif name_stores[i] == "Мини" or name_stores[i] == "Гипер" or name_stores[i] == "Супер":
+    elif name_stores[i] == "Мини" or name_stores[i] == "Гипер" or name_stores[i] == "Супер" or name_stores[i] == "Гипермаркет":
         lenta = sfr.lenta(name_stores[i], name_streets[i], message_body[i], counter)
         for data in lenta:
             active_sheet.append(data)

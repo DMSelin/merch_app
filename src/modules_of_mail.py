@@ -44,7 +44,7 @@ def extract_store_names(subject):
     # Создаю список названий магазинов из полученного списка названий отчетов
     name_stores = list()
     for i in subject:
-        if i.find(",", 0, 12) == -1:
+        if i.find(",", 0, 10) == -1:
             name_store = i[:i.find(" ")]
         else:
             name_store = i[:i.find(",")]

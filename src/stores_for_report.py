@@ -9,7 +9,7 @@ def pytrchka(adress, comment, count):
     name_store = cur.fetchone()[1]
 
     cur.execute("""SELECT * FROM bottles 
-                    WHERE bottleid in (15, 18, 20, 24)""")
+                    WHERE bottleid in (14, 18, 20, 24)""")
     positions = cur.fetchall()
 
     return [
@@ -88,10 +88,10 @@ def kib(adress, comment, count):
     positions = cur.fetchall()
 
     return [
-        (count, f'{name_store}', f'{adress}', f'{positions[0][1]}', '', '', 599.99, '', f'{comment}'),
-        ('', '', '', f'{positions[1][1]}', '', '', 549.99, ''),
-        ('', '', '', f'{positions[2][1]}', '', '', 329.99, ''),
-        ('', '', '', f'{positions[3][1]}', '', '', 269.99, '')
+        (count, f'{name_store}', f'{adress}', f'{positions[0][1]}', '', '', 649.99, '', f'{comment}'),
+        ('', '', '', f'{positions[1][1]}', '', '', 589.99, ''),
+        ('', '', '', f'{positions[2][1]}', '', '', 349.99, ''),
+        ('', '', '', f'{positions[3][1]}', '', '', 289.99, '')
     ]
 
 # Верный 6
@@ -100,7 +100,7 @@ def verniy(adress, comment, count):
     name_store = cur.fetchone()[1]
 
     cur.execute("""SELECT * FROM bottles 
-                    WHERE bottleid in (14, 17, 18, 24, 25, 29, 31, 36, 37)""")
+                    WHERE bottleid in (17, 18, 24, 31, 36, 37)""")
     positions = cur.fetchall()
 
     return [
@@ -109,10 +109,7 @@ def verniy(adress, comment, count):
         ('', '', '', f'{positions[2][1]}', '', '', '', ''),
         ('', '', '', f'{positions[3][1]}', '', '', '', ''),
         ('', '', '', f'{positions[4][1]}', '', '', '', ''),
-        ('', '', '', f'{positions[5][1]}', '', '', '', ''),
-        ('', '', '', f'{positions[6][1]}', '', '', '', ''),
-        ('', '', '', f'{positions[7][1]}', '', '', '', ''),
-        ('', '', '', f'{positions[8][1]}', '', '', '', '')
+        ('', '', '', f'{positions[5][1]}', '', '', '', '')
     ]
 
 # Градусы 7
@@ -215,7 +212,7 @@ def vinlab(adress, comment, count):
     ]
 
 # Бристоль 11
-def brisol(adress, comment, count):
+def bristol(adress, comment, count):
     cur.execute("""SELECT * from stores WHERE storeid=9""")
     name_store = cur.fetchone()[1]
 
@@ -234,23 +231,22 @@ def lenta(lenta, adress, comment, count):
         cur.execute("""SELECT * from stores WHERE storeid=14""")
     elif lenta == "Мини":
         cur.execute("""SELECT * from stores WHERE storeid=15""")
-    elif lenta == "Гипер":
+    elif lenta == "Гипер" or lenta == "Гипермаркет":
         cur.execute("""SELECT * from stores WHERE storeid=16""")
     name_store = cur.fetchone()[1]
 
     cur.execute("""SELECT * FROM bottles 
-                    WHERE bottleid in (2, 3, 4, 14, 18, 20, 24, 15)""")
+                    WHERE bottleid in (2, 3, 4, 14, 18, 20, 24)""")
     positions = cur.fetchall()
 
     matrix = [
         (count, f'{name_store}', f'{adress}', f'{positions[0][1]}', '', '', '', '', f'{comment}'),
-        ('', '', '', f'{positions[1][1]}', '', '', '', ''),
+        ('', '', '', 'Водка Яблочная 0,5', '', '', '', ''),
         ('', '', '', f'{positions[2][1]}', '', '', '', ''),
         ('', '', '', f'{positions[3][1]}', '', '', '', ''),
+        ('', '', '', f'{positions[4][1]}', '', '', '', ''),
         ('', '', '', f'{positions[5][1]}', '', '', '', ''),
         ('', '', '', f'{positions[6][1]}', '', '', '', ''),
-        ('', '', '', f'{positions[7][1]}', '', '', '', ''),
-        ('', '', '', f'{positions[4][1]}', '', '', '', ''),
         ('', '', '', 'Коньяк Вековой парк 4года 0,5', 0, 0, '', '', 'нет в матрице'),
         ('', '', '', 'Коньяк Вековой парк 5 лет 0,5', 0, 0, '', '', 'нет в матрице'),
         ('', '', '', 'Бренди Пре Апельсин 0,5', 0, 0, '', '', 'нет в матрице'),
