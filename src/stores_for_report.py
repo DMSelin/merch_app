@@ -13,9 +13,9 @@ def pytrchka(adress, comment, count):
     positions = cur.fetchall()
 
     return [
-        (count, f'{name_store}', f'{adress}', f'{positions[3][1]}', '', '', '', '', f'{comment}'),
-        ('', '', '', f'{positions[0][1]}', '', '', '', ''),
-        ('', '', '', f'{positions[1][1]}', '', '', '', ''),
+        (count, f'{name_store}', f'{adress}', f'{positions[3][1]}', '', '', 689.99, '', f'{comment}'),
+        ('', '', '', f'{positions[0][1]}', '', '', 849.99, ''),
+        ('', '', '', f'{positions[1][1]}', '', '', 829.99, ''),
         ('', '', '', f'{positions[2][1]}', 0, 0, '', '', 'нет в матрице')
     ]
 
@@ -64,18 +64,19 @@ def magnit(adress, comment, count):
     name_store = cur.fetchone()[1]
 
     cur.execute("""SELECT * FROM bottles 
-                    WHERE bottleid in (2, 9, 14, 18, 20, 24, 25, 31)""")
+                    WHERE bottleid in (2, 9, 14, 16, 18, 20, 24, 25, 31)""")
     positions = cur.fetchall()
 
     return [
         (count, f'{name_store}', f'{adress}', f'{positions[0][1]}', 0, 0, '', '', 'нет в матрице'),
         ('', '', '', f'{positions[1][1]}', '', '', '', ''),
         ('', '', '', f'{positions[2][1]}', '', '', '', '', f'{comment}'),
-        ('', '', '', f'{positions[3][1]}', '', '', '', ''),
         ('', '', '', f'{positions[4][1]}', '', '', '', ''),
         ('', '', '', f'{positions[5][1]}', '', '', '', ''),
+        ('', '', '', f'{positions[3][1]}', 0, 0, '', '', 'нет в матрице'),
         ('', '', '', f'{positions[6][1]}', '', '', '', ''),
-        ('', '', '', f'{positions[7][1]}', '', '', '', '')
+        ('', '', '', f'{positions[7][1]}', '', '', '', ''),
+        ('', '', '', f'{positions[8][1]}', '', '', '', '')
     ]
 
 # Красное&Белое 5
@@ -89,8 +90,8 @@ def kib(adress, comment, count):
 
     return [
         (count, f'{name_store}', f'{adress}', f'{positions[0][1]}', '', '', 649.99, '', f'{comment}'),
-        ('', '', '', f'{positions[1][1]}', '', '', 589.99, ''),
-        ('', '', '', f'{positions[2][1]}', '', '', 349.99, ''),
+        ('', '', '', f'{positions[1][1]}', '', '', 566.99, ''),
+        ('', '', '', f'{positions[2][1]}', '', '', 344.99, ''),
         ('', '', '', f'{positions[3][1]}', '', '', 289.99, '')
     ]
 
@@ -109,7 +110,8 @@ def verniy(adress, comment, count):
         ('', '', '', f'{positions[2][1]}', '', '', '', ''),
         ('', '', '', f'{positions[3][1]}', '', '', '', ''),
         ('', '', '', f'{positions[4][1]}', '', '', '', ''),
-        ('', '', '', f'{positions[5][1]}', '', '', '', '')
+        ('', '', '', f'{positions[5][1]}', '', '', '', ''),
+        ('', '', '', 'Бренди Пре Яблоко 0,5', '', '', '', '')
     ]
 
 # Градусы 7
@@ -189,8 +191,8 @@ def okei(adress, comment, count):
         ('', '', '', f'{positions[5][1]}', '', '', '', ''),
         ('', '', '', f'{positions[6][1]}', '', '', '', ''),
         ('', '', '', f'{positions[7][1]}', '', '', '', ''),
-        ('', '', '', 'Коньяк Вековой парк 4года 0,5', '', '', '', ''),
         ('', '', '', 'Коньяк Вековой парк 5 лет 0,5', '', '', '', ''),
+        ('', '', '', 'Коньяк Вековой парк 4 года 0,5', '', '', '', ''),
         ('', '', '', 'Бренди Пре Апельсин 0,5', '', '', '', ''),
         ('', '', '', 'Бренди Пре Яблоко 0,5', '', '', '', '')
     ]
@@ -247,8 +249,57 @@ def lenta(lenta, adress, comment, count):
         ('', '', '', f'{positions[4][1]}', '', '', '', ''),
         ('', '', '', f'{positions[5][1]}', '', '', '', ''),
         ('', '', '', f'{positions[6][1]}', '', '', '', ''),
-        ('', '', '', 'Коньяк Вековой парк 4года 0,5', 0, 0, '', '', 'нет в матрице'),
         ('', '', '', 'Коньяк Вековой парк 5 лет 0,5', 0, 0, '', '', 'нет в матрице'),
+        ('', '', '', 'Коньяк Вековой парк 4года 0,5', 0, 0, '', '', 'нет в матрице'),
+        ('', '', '', 'Бренди Пре Апельсин 0,5', 0, 0, '', '', 'нет в матрице'),
+        ('', '', '', 'Бренди Пре Яблоко 0,5', 0, 0, '', '', 'нет в матрице')
+    ]
+
+    return matrix
+
+def Azbyka(adress, comment, count):
+    cur.execute("""SELECT * from stores WHERE storeid=16""")
+    name_store = cur.fetchone()[1]
+
+    cur.execute("""SELECT * FROM bottles 
+                    WHERE bottleid in (2, 3, 4, 14, 18, 20, 24)""")
+    positions = cur.fetchall()
+
+    matrix = [
+        (count, f'{name_store}', f'{adress}', f'{positions[0][1]}', '', '', '', '', f'{comment}'),
+        ('', '', '', 'Водка Яблочная 0,5', '', '', '', ''),
+        ('', '', '', f'{positions[2][1]}', '', '', '', ''),
+        ('', '', '', f'{positions[3][1]}', '', '', '', ''),
+        ('', '', '', f'{positions[4][1]}', '', '', '', ''),
+        ('', '', '', f'{positions[5][1]}', '', '', '', ''),
+        ('', '', '', f'{positions[6][1]}', '', '', '', ''),
+    ]
+
+    return matrix
+
+def lenta(lenta, adress, comment, count):
+    if lenta == "Супер":
+        cur.execute("""SELECT * from stores WHERE storeid=14""")
+    elif lenta == "Мини":
+        cur.execute("""SELECT * from stores WHERE storeid=15""")
+    elif lenta == "Гипер" or lenta == "Гипермаркет":
+        cur.execute("""SELECT * from stores WHERE storeid=16""")
+    name_store = cur.fetchone()[1]
+
+    cur.execute("""SELECT * FROM bottles 
+                    WHERE bottleid in (2, 3, 4, 14, 18, 20, 24)""")
+    positions = cur.fetchall()
+
+    matrix = [
+        (count, f'{name_store}', f'{adress}', f'{positions[0][1]}', '', '', '', '', f'{comment}'),
+        ('', '', '', 'Водка Яблочная 0,5', '', '', '', ''),
+        ('', '', '', f'{positions[2][1]}', '', '', '', ''),
+        ('', '', '', f'{positions[3][1]}', '', '', '', ''),
+        ('', '', '', f'{positions[4][1]}', '', '', '', ''),
+        ('', '', '', f'{positions[5][1]}', '', '', '', ''),
+        ('', '', '', f'{positions[6][1]}', '', '', '', ''),
+        ('', '', '', 'Коньяк Вековой парк 5 лет 0,5', 0, 0, '', '', 'нет в матрице'),
+        ('', '', '', 'Коньяк Вековой парк 4года 0,5', 0, 0, '', '', 'нет в матрице'),
         ('', '', '', 'Бренди Пре Апельсин 0,5', 0, 0, '', '', 'нет в матрице'),
         ('', '', '', 'Бренди Пре Яблоко 0,5', 0, 0, '', '', 'нет в матрице')
     ]

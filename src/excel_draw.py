@@ -27,7 +27,7 @@ for i in range(0, len(name_stores)):
     elif name_stores[i] == "Магнит":
         for data in sfr.magnit(name_streets[i], message_body[i], counter):
             active_sheet.append(data)
-    elif name_stores[i] == "КиБ" or name_stores[i] == "Киб":
+    elif name_stores[i] == "КиБ" or name_stores[i] == "Киб" or name_stores[i] == "Кит":
         for data in sfr.kib(name_streets[i], message_body[i], counter):
             active_sheet.append(data)
     elif name_stores[i] == "Верный":
@@ -47,6 +47,9 @@ for i in range(0, len(name_stores)):
             active_sheet.append(data)
     elif name_stores[i] == "Бристоль":
         for data in sfr.bristol(name_streets[i], message_body[i], counter):
+            active_sheet.append(data)
+    elif name_stores[i] == "Азбука":
+        for data in sfr.Azbyka(name_streets[i], message_body[i], counter):
             active_sheet.append(data)
     elif name_stores[i] == "Мини" or name_stores[i] == "Гипер" or name_stores[i] == "Супер" or name_stores[i] == "Гипермаркет":
         lenta = sfr.lenta(name_stores[i], name_streets[i], message_body[i], counter)

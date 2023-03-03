@@ -76,4 +76,4 @@ class FormattingTable:
         active_sheet.column_dimensions["F"].width = 8.0
         active_sheet.column_dimensions["G"].width = 9.0
         active_sheet.column_dimensions["H"].width = 4.0
-        active_sheet.column_dimensions["I"].width = 60.0
+        active_sheet.column_dimensions["I"].width = 90.0
