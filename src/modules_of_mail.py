@@ -67,6 +67,6 @@ def extract_message_body(text_body):
     for i in text_body:
         i = i.replace("С уважением Селин Денис", "")
         i = i.replace("\n", "")
-        comment_mails.append(f"{i}\n")
+        comment_mails.append(f"{i}")
 
     return comment_mails
