@@ -2,7 +2,7 @@ import sqlite3 as sl
 
 
     # Подключение к файлу с б/д
-with sl.connect('./bd/kkz_app.db') as con:
+with sl.connect('/Users/ds/pythonApp/Git/merch_app/src/bd/kkz_app.db') as con:
     cur = con.cursor()
 
     try:

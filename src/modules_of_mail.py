@@ -5,7 +5,7 @@ from configparser import ConfigParser
 from email.header import decode_header 
 
 def connection():
-    urlsconf ='src/config/config.ini'
+    urlsconf ='/Users/ds/pythonApp/Git/merch_app/src/config/config.ini'
     config =ConfigParser() 
     config.read(urlsconf) 
 
