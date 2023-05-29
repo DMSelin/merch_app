@@ -65,6 +65,7 @@ def extract_message_body(text_body):
     # Создаю список комментариев из полученного списка текстов писем
     comment_mails = list()
     for i in text_body:
+        i = i.replace("С уважением Мария", "")
         i = i.replace("С уважением Селин Денис", "")
         i = i.replace("\n", "")
         comment_mails.append(f"{i}")

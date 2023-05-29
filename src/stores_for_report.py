@@ -91,7 +91,7 @@ def kib(adress, comment, count):
     return [
         (count, f'{name_store}', f'{adress}', f'{positions[0][1]}', '', 1, 649.99, '', f'{comment}'),
         ('', '', '', f'{positions[1][1]}', '', 1, 589.99, ''),
-        ('', '', '', f'{positions[2][1]}', '', 1, 348.99, ''),
+        ('', '', '', f'{positions[2][1]}', '', 1, 346.99, ''),
         ('', '', '', f'{positions[3][1]}', '', 1, 289.99, '')
     ]
 
@@ -152,10 +152,10 @@ def am(adress, comment, count):
         ('', '', '', f'{positions[1][1]}', '', 1, 558.99, ''),
         ('', '', '', f'{positions[6][1]}', 3, 1, 1299.99, ''),
         ('', '', '', f'{positions[7][1]}', 3, 1, 1148.99, ''),
-        ('', '', '', f'{positions[8][1]}', 3, 1, 748.99, ''),
+        ('', '', '', f'{positions[8][1]}', 3, 1, 749.99, ''),
         ('', '', '', f'{positions[9][1]}', 3, 1, 759.99, ''),
         ('', '', '', f'{positions[10][1]}', 3, 1, 668.99, ''),
-        ('', '', '', f'{positions[11][1]}', 3, 1, 569.99, ''),
+        ('', '', '', f'{positions[11][1]}', 3, 1, 549.99, ''),
         ('', '', '', f'{positions[12][1]}', 0, 0, '', '', 'нет в наличии'),
         ('', '', '', f'{positions[13][1]}', 0, 0, '', '', 'нет в наличии'),
         ('', '', '', f'{positions[14][1]}', 0, 0, '', '', 'нет в наличии'),
@@ -207,10 +207,10 @@ def vinlab(adress, comment, count):
     positions = cur.fetchall()
 
     return [
-        (count, f'{name_store}', f'{adress}', f'{positions[0][1]}', 1, 1, 799, '', f'{comment}'),
+        (count, f'{name_store}', f'{adress}', f'{positions[0][1]}', 1, 1, 749, '', f'{comment}'),
         ('', '', '', f'{positions[3][1]}', 3, 1,  349, ''),
-        ('', '', '', f'{positions[1][1]}', 1, 1,  599, ''),
-        ('', '', '', f'{positions[2][1]}', 1, 1,  689, '')
+        ('', '', '', f'{positions[1][1]}', 1, 1,  589, ''),
+        ('', '', '', f'{positions[2][1]}', 1, 1,  698, '')
     ]
 
 # Бристоль 11

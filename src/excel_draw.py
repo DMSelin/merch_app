@@ -18,7 +18,7 @@ for i in range(0, len(name_stores)):
     if name_stores[i] == "Дикси":
         for data in sfr.diksi(name_streets[i], message_body[i], counter):
             active_sheet.append(data)
-    elif name_stores[i] == "Пятёрочка" or name_stores[i] == "Пятерочка" or name_stores[i] == "Пьяница" or name_stores[i] == "Пъятница":
+    elif name_stores[i] == "Пятёрочка" or name_stores[i] == "Пятерочка" or name_stores[i] == "Пьяница" or name_stores[i] == "Пъятница" or name_stores[i] == "Пьятница":
         for data in sfr.pytrchka(name_streets[i], message_body[i], counter):
             active_sheet.append(data)
     elif name_stores[i] == "Перекресток" or name_stores[i] == "Перекрёсток" or name_stores[i] == "Перекрёсток," or name_stores[i] == "Перекресток,": 
